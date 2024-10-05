@@ -1,8 +1,11 @@
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Streams {
     public static void main(String[] args) {
-         /*
+
         Integer[] ints = {1,2,3,4,5};
 
         Stream.of(ints)
@@ -25,12 +28,12 @@ public class Streams {
         System.out.println(result);
 
         //equals 115
-        int result = Stream.of(ints)
+        result = Stream.of(ints)
                 .reduce(100, (a,b) -> a+b);
         System.out.println(result);
 
         //equals 5
-        int result = Stream.of(ints)
+        result = Stream.of(ints)
                 .max(Comparator.comparing(i -> i))
                 .get();
         System.out.println(result);
@@ -46,8 +49,6 @@ public class Streams {
                 .limit(3)
                 .forEach(i -> System.out.println(i));
 
-        */
-
         Person homer = new Person("Homer");
         Person bart = new Person("Bart");
         Person lisa = new Person("Lisa");
@@ -56,7 +57,7 @@ public class Streams {
         Person moe = new Person("Moe");
         moe.children = new Person[]{};
 
-        /*
+
         //result: Bart, List, Bart, Lisa
         Stream.of(homer, homer)
                 .flatMap(p -> Stream.of(p.children))
@@ -66,12 +67,12 @@ public class Streams {
                 .flatMap(p -> Stream.of(p.children))
                 .collect(Collectors.toList());
         children.forEach(p -> System.out.println(p.name));
-        */
+
 
         //result = false
-        boolean result = Stream.of(homer)
+        boolean boolResult = Stream.of(homer)
                 .allMatch(p -> p.children.length == 0);
-        System.out.println(result);
+        System.out.println(boolResult);
 
         //result = true
         boolean result2 = Stream.of(homer, moe)
