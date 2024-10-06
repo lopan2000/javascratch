@@ -1,4 +1,4 @@
-import java.util.Arrays;
+package langfeatures;
 
 public class Xor {
     public static void main(String[] args) {

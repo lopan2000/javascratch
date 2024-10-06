@@ -1,3 +1,5 @@
+package langfeatures;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -16,7 +18,7 @@ public class Lambdas {
                 .forEach(System.out::println);
 
         messages.stream()
-                .map(Lambdas::formatMessage)
+                .map(langfeatures.Lambdas::formatMessage)
                 .forEach(System.out::println);
 
         messages.stream()
@@ -79,7 +81,7 @@ public class Lambdas {
         t.start();
         Thread.sleep(100);
 
-        //new way with Lambdas (since Runnable is a func interface (meaning has only one method))
+        //new way with langfeatures.Lambdas (since Runnable is a func interface (meaning has only one method))
         Runnable r = () -> {
             System.out.println("hi");
         };
