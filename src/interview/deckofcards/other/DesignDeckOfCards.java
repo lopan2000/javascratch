@@ -1,7 +1,6 @@
-package interview;
+package interview.deckofcards.other;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 
 public class DesignDeckOfCards {
@@ -18,9 +17,6 @@ public class DesignDeckOfCards {
         */
         deck.shuffle();
         System.out.println(deck);
-        System.out.println();
-        deck.shuffle();
-        System.out.println(deck);
     }
 }
 
@@ -34,6 +30,7 @@ enum Rank {
     Rank(int value) {
         this.value = value;
     }
+
     public int getValue() {
         return value;
     }
@@ -44,7 +41,6 @@ enum Suit {
 
 class Deck extends ArrayList<Card> {
 
-    final int DECK_SIZE = 52;
     Random rand = new Random();
 
     public Deck() {
@@ -57,11 +53,24 @@ class Deck extends ArrayList<Card> {
     public Card drawCard() {
         return remove(size()-1);
     }
+
+    /**
+     * Knuth-Fisher-Yates shuffle
+     *
+     * ex) [a,b,c]
+     * i = 2
+     * j = rand(3) -> 0..2
+     *
+     * i = 1
+     * j = rand(2) -> 0..1
+     */
     public void shuffle() {
         //Collections.shuffle(this);
-        for (int i = 0; i < DECK_SIZE; i++) {
-            swap(i, rand.nextInt(DECK_SIZE));
+        for (int i = size()-1; i > 0; i--) {
+            int j = rand.nextInt(i+1); //(TODO) why i+1?
+            swap(i, j);
         }
+
     }
     private void swap(int i, int j) {
         Card tempI = get(i);
