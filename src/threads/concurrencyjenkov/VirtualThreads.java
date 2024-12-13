@@ -1,4 +1,4 @@
-package threads;
+package threads.concurrencyjenkov;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class VirtualThreads {
           instantly since virtual threads are daemons.
          */
         try {
-            vt2.join();
+            vt2.join(); //main thread blocks until vt2 finishes
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

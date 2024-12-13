@@ -3,6 +3,7 @@ package interview;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InterviewQuestions {
 
@@ -243,11 +244,86 @@ public class InterviewQuestions {
         //list.forEach(sb -> System.out.println(sb.toString()));
         //int x = 1;
         //System.out.println(x == 1 ? true : false);
+        /*
         int x = 1;
         x = (x == 1) ? --x : ++x;
         System.out.println(x);
+         */
 
+        //System.out.println(process_tree_bfs(3));
+        /*
+        final String RED_APPLE = "redApple", GREEN_APPLE = "greenApple";
+        List<String> apples = List.of(RED_APPLE, RED_APPLE, RED_APPLE, GREEN_APPLE, GREEN_APPLE, RED_APPLE);
+         */
+        /*
+        Map<String, Integer> map = new HashMap<>();
+        for (String apple : apples) {
+            map.merge(apple, 1, Integer::sum);
+        }
+        map.entrySet().stream()
+                .forEach(e -> System.out.println(e.getKey() + ": " + e.getValue()));
+         */
+        //Map<String, Long> map = apples.stream()
+        //        .collect(Collectors.groupingBy(apple -> apple, Collectors.counting()));
+        //System.out.println(map);
+        /*
+        String s = "123 google.mail.com";
+        String[] arr = s.split(" ");
+        System.out.println(arr[0]);
+        String[] domainArr = arr[1].split("\\.");
+        for (int i = 0; i < domainArr.length; i++) {
+            String subdomain = domainArr[i];
+            for (int j = i + 1; j < domainArr.length; j++) {
+                subdomain += "." + domainArr[j];
+            }
+            System.out.println(subdomain);
+        }
+        */
+        /*
+        String time = "23:02";
+        int totalMins = Integer.parseInt(time.substring(0, 2)) * 60 +
+                Integer.parseInt(time.substring(3));
+         */
+        /*
+        for (int i = 0; i < 10; i++) {
+            int x = i;
+            StringBuilder s = new StringBuilder();
+            while (x > 0) {
+                s.insert(0, x % 2);
+                x /= 2;
+            }
+            System.out.println(s.toString());
+        }
+        */
+        /*
+        int k = 3;
+        while (k-- > 0) {
+            System.out.println(k);
+        }
+        */
     }
+
+    /*
+    public record ProcTreeNode(int val, Integer parentVal) {}
+
+    private static Integer process_tree_bfs(int n) {
+        ArrayDeque<ProcTreeNode> queue = new ArrayDeque<>();
+        int i = 1;
+        queue.add(new ProcTreeNode(i, null));
+        while (!queue.isEmpty()) {
+            for (int j = 0; j < queue.size(); j++) {
+                ProcTreeNode node = queue.removeFirst();
+                if (node.val == n) {
+                    return node.parentVal;
+                }
+                for (int k = 0; k < node.val; k++) {
+                    queue.add(new ProcTreeNode(++i, node.val));
+                }
+            }
+        }
+        throw new IllegalStateException();
+    }
+    */
 
     private static int sumOfSquaresOfDigits(int x) {
         int sum = 0;

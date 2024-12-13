@@ -1,4 +1,4 @@
-package threads;
+package threads.concurrencyjenkov;
 
 public class CreateStartStop {
 
