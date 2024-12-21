@@ -2,9 +2,12 @@ package langfeatures.streams;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /**
  * https://javaconceptoftheday.com/java-8-interview-sample-coding-questions/
@@ -19,7 +22,12 @@ public class InterviewProblems {
         //sumSalaries();
         //createFreqMapFromArray();
         //createFreqMapFromList();
-        createFreqMapFromListWithGroupingBy();
+        //createFreqMapFromListWithGroupingBy();
+        //populateStringBuilder();
+        //collectStringIntolist();
+        //cartesianProduct();
+        //unionOfTwoArrays();
+        unionOfTwoPrimitiveArrays();
     }
 
     private static void separateOddEven() {
@@ -107,6 +115,49 @@ public class InterviewProblems {
         for (Map.Entry<Integer, Long> entry : map.entrySet()) {
             System.out.println(entry);
         }
+    }
+
+    private static void populateStringBuilder() {
+        List<String> list = List.of("a","b","c");
+        StringBuilder sb = list.stream()
+                .collect(StringBuilder::new,    //supplier
+                        StringBuilder::append,  //accumulator
+                        StringBuilder::append); //combiner (for parallel ops)
+        System.out.println(sb.toString());
+    }
+
+    private static void collectStringIntolist() {
+        List<String> list = List.of("a","b","c");
+        List<String> result = list.stream()
+                .map(String::toUpperCase)
+                .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+        System.out.println(result);
+    }
+
+    private static void cartesianProduct() {
+        List<String> list1 = Arrays.asList("A","B","C");
+        List<Integer> list2 = Arrays.asList(1,2,3);
+        List<String> result = list1.stream()
+                .flatMap(x -> list2.stream()
+                        .map(y -> x+y))
+                .collect(Collectors.toList());
+        System.out.println(result);
+    }
+
+    private static void unionOfTwoArrays() {
+        Integer[] arr1 = {1,2,3};
+        Integer[] arr2 = {4,5,6};
+        Integer[] result = Stream.concat(Arrays.stream(arr1), Arrays.stream(arr2))
+                .toArray(Integer[]::new);
+        System.out.println(Arrays.toString(result));
+    }
+
+    private static void unionOfTwoPrimitiveArrays() {
+        int[] arr1 = {1,2,3};
+        int[] arr2 = {4,5,6};
+        int[] result = IntStream.concat(Arrays.stream(arr1), Arrays.stream(arr2))
+                .toArray();
+        System.out.println(Arrays.toString(result));
     }
 
     private static class Person {

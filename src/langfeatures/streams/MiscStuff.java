@@ -1,11 +1,11 @@
-package langfeatures;
+package langfeatures.streams;
 
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Streams {
+public class MiscStuff {
     public static void main(String[] args) throws Exception {
         /*
         Integer[] ints = {1,2,3,4,5};

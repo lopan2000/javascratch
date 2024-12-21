@@ -1,11 +1,15 @@
-package apiReview;
+package apireview;
 
 import java.util.Arrays;
 
 public class StringAPI {
 
     public static void main(String[] args) {
+        //testParsing();
+        testStringIntern();
+    }
 
+    private static void testParsing() {
         /*
         paypalSplitString("WWWW");
         paypalSplitString("WBWW");
@@ -16,7 +20,6 @@ public class StringAPI {
 
         String s = "leet**cod*e";
         leetCodeRemoveStarsFromString(s);
-        leetCodeInverseRemoveStarsFromString(s);
     }
 
     /*
@@ -36,7 +39,14 @@ public class StringAPI {
                 s.replaceAll("^\\*+|\\*+$", "").split("\\*+")));
     }
 
-    private static void leetCodeInverseRemoveStarsFromString(String s) {
-        //TODO
+    private static void testStringIntern() {
+        String s1 = "abc";                          //str literals always stored in str pool
+        String s2 = "abc";                          //str literals always stored in str pool
+        String s3 = (s1 + s2).substring(0,3);       //derived string not in str pool
+        System.out.println(s1 == s2 && s2 == s3);   //false
+        s3 = s3.intern();                           //returns ref to the existing str in the pool (same ref s1 and s2 hold), otherwise would add it to pool
+        System.out.println(s1 == s2 && s2 == s3);   //true
     }
+
+
 }

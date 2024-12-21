@@ -1,7 +1,12 @@
-package langfeatures;
+package langfeatures.bits;
 
 public class Xor {
     public static void main(String[] args) {
+        //removeDuplicates();
+        testDetermineIfSignsDiffer();
+    }
+
+    private static void removeDuplicates() {
         /*
         boolean a = true;
         boolean b = false;
@@ -23,6 +28,18 @@ public class Xor {
         }
         System.out.println("result: " + result);
         System.out.println("result: " + (1 ^ 2 ^ 3 ^ 2 ^ 1));
+    }
+
+    //(x ^ y) < 0
+    private static void testDetermineIfSignsDiffer() {
+        System.out.println(doSignsDiffer(-1, 1));   //true
+        System.out.println(doSignsDiffer(3, -1));   //true
+        System.out.println(doSignsDiffer(0, 1));    //false
+
+    }
+
+    private static boolean doSignsDiffer(int x, int y) {
+        return (x ^ y) < 0;
     }
 }
 

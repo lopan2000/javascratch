@@ -1,6 +1,4 @@
-package interview;
-
-import interview.privateconstructor.PrivateConstructor;
+package interview.privateconstructor;
 
 import java.lang.reflect.Constructor;
 

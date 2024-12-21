@@ -301,6 +301,19 @@ public class InterviewQuestions {
             System.out.println(k);
         }
         */
+        System.out.println(findDuplicateCharacters("abcadeefga"));
+
+    }
+
+    private static List<Character> findDuplicateCharacters(String s) {
+        List<Character> result = new ArrayList<>();
+        Map<Character, Integer> map = new HashMap<>();
+        for (char c : s.toCharArray()) {
+            if (map.merge(c, 1, Integer::sum) == 2) {
+                result.add(c);
+            }
+        }
+        return result;
     }
 
     /*
