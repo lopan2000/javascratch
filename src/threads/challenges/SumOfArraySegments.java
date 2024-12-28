@@ -2,6 +2,9 @@ package threads.challenges;
 
 import java.util.Arrays;
 
+/**
+Is this anything?  -delete?
+ */
 public class SumOfArraySegments {
 
     public static void main(String[] args) {

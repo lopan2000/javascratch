@@ -1,14 +1,24 @@
 package langfeatures.bits;
 
+/**
+ * Note: Java promotion rules:
+ *  1) char is promoted to int during arithmetic
+ *  2) The result of any arithmetic op involving char is an int.
+ *
+ *      System.out.println('a' + 1);            //98
+ *      System.out.println((char) ('a' + 1));   //b
+ */
 public class IntToHex {
 
     public static void main(String[] args) {
         //testCharArithmetic01();
         //generateASCIIChart();
+
         //testDecToHexPositive();
         //testDecToHexNegavite();
+
         //testHexToDecPositive();
-        testHexToDecNegative();
+        //testHexToDecNegative();
     }
 
     private static void testDecToHexPositive() {
@@ -58,6 +68,23 @@ public class IntToHex {
         return hexBuilder.reverse().toString();
     }
 
+    private static String decToHexV2(int x) {
+        if (x == 0) {
+            return "0";
+        }
+        StringBuilder hexBuilder = new StringBuilder();
+        while (x != 0) {
+            int lsNibble = x & 0xF; //0b1111
+            if (lsNibble < 10) {
+                hexBuilder.append(lsNibble);
+            } else {
+                hexBuilder.append((char) ('a' + lsNibble - 10));
+            }
+            x >>>= 4;
+        }
+        return hexBuilder.reverse().toString();
+    }
+
     private static int hexToDec(String h) {
         char[] arr = h.toCharArray();
         int x = 0, n = 0;
@@ -73,6 +100,20 @@ public class IntToHex {
             n++;
         }
         return x;
+    }
+
+    private static int hexToDecV2(String h) {
+        int sum = 0, n = 0;
+        for (int i = h.length()-1; i > -1; i--) {
+            char c = h.charAt(i);
+            if (Character.isDigit(c)) {
+                sum += (c - '0') * (int) Math.pow(16, n);
+            } else {
+                sum += (c - 'a' + 10) * (int) Math.pow(16, n);
+            }
+            n++;
+        }
+        return sum;
     }
 
     /*

@@ -1,5 +1,6 @@
 package langfeatures.streams;
 
+import java.util.Arrays;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
 import java.util.stream.Collectors;
