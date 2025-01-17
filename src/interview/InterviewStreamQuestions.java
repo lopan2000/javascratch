@@ -49,4 +49,8 @@ public class InterviewStreamQuestions {
         return strings.stream()
                 .collect(Collectors.joining(delim));
     }
+
+    public static class LongestIncreasingSubsequence {
+
+    }
 }

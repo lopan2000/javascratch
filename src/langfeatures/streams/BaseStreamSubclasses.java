@@ -1,8 +1,6 @@
 package langfeatures.streams;
 
-import java.util.Arrays;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
@@ -24,8 +22,11 @@ public class BaseStreamSubclasses {
      *
      */
     public static void main(String[] args) {
-        intStream();
-
+        //intStream();
+        Random rand = new Random();
+        for (int i = 0; i < 30; i++) {
+            System.out.println(rand.nextInt(3));
+        }
     }
 
     /*
@@ -70,6 +71,17 @@ public class BaseStreamSubclasses {
         //max (min also available)
         OptionalInt max = IntStream.of(3,1,-5,999,6,0).max();
         System.out.println("max: " + (max.isPresent() ? max.getAsInt() : "n/a"));
+
+        //max -- cool example:
+        List<List<Integer>> result = new ArrayList<>();
+        result.add(List.of(1));
+        result.add(List.of(1,2,3));
+        result.add(List.of(1,2));
+        int maxSize = result.stream()
+                .mapToInt(List::size)
+                .max()
+                .orElse(0);
+        System.out.println("max list size: " + maxSize);
 
         //none match
         boolean isNoneMatch = IntStream.of(1,2,3)

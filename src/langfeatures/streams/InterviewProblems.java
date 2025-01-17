@@ -9,9 +9,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-/**
- * https://javaconceptoftheday.com/java-8-interview-sample-coding-questions/
- */
 public class InterviewProblems {
 
     public static void main(String[] args) {
@@ -27,7 +24,8 @@ public class InterviewProblems {
         //collectStringIntolist();
         //cartesianProduct();
         //unionOfTwoArrays();
-        unionOfTwoPrimitiveArrays();
+        //unionOfTwoPrimitiveArrays();
+        stream2DArray();
     }
 
     private static void separateOddEven() {
@@ -158,6 +156,15 @@ public class InterviewProblems {
         int[] result = IntStream.concat(Arrays.stream(arr1), Arrays.stream(arr2))
                 .toArray();
         System.out.println(Arrays.toString(result));
+    }
+
+    private static void stream2DArray() {
+        int[][] psums = new int[10][];
+        for (int i = 0; i < 10; i++) {
+            psums[i] = new int[i];
+        }
+        Arrays.stream(psums)
+                .forEach(a -> System.out.println(Arrays.toString(a)));
     }
 
     private static class Person {

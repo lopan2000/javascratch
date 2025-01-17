@@ -9,9 +9,9 @@ public class FibonnaciVariants {
         for (int i = 0; i < n; i++) {
             //System.out.println(fibRecursive(i));
             //System.out.println(fibRecursiveMemo(i, new int[n]));
-            //System.out.println(fibIterative(i));
+            System.out.println(fibIterative(i));
             //System.out.println(fibIterativePreventOverflowWithException(i));
-            System.out.println(fibIterativePreventOverflowWithBigInt(i));
+            //System.out.println(fibIterativePreventOverflowWithBigInt(i));
         }
     }
 
@@ -25,23 +25,24 @@ public class FibonnaciVariants {
     private static int fibRecursiveMemo(int n, int[] memo) {
         if (memo[n] != 0) {
             return memo[n];
-        } else if (n == 0 || n == 1) {
+        }
+        if (n == 0 || n == 1) {
             return n;
         }
-        int result = fibRecursiveMemo(n-2, memo) + fibRecursiveMemo(n-1, memo);
-        memo[n] = result;
-        return result;
+        int x = fibRecursiveMemo(n-2, memo) + fibRecursiveMemo(n-1, memo);
+        memo[n] = x;
+        return x;
     }
 
     private static int fibIterative(int n) {
         if (n == 0 || n == 1) {
             return n;
         }
-        int a = 0, b = 1;
-        for (int i = 2; i < n+1; i++) {
+        int a = 0, b = 1;       //a->f(0), b->f(1)
+        for (int i = 2; i <= n; i++) {
             int tempA = a;
-            a = b;
-            b = tempA + b;
+            a = b;              //a->f(1)
+            b = tempA + b;      //b->f(0) + f(1) = f(2)...
         }
         return b;
     }

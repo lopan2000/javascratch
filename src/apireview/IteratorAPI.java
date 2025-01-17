@@ -7,7 +7,7 @@ public class IteratorAPI {
     public static void main(String[] args) {
         //removeFromSetInPlace();
         //removeFromListInPlace();
-        removeFromMapInPlace();
+        //removeFromMapInPlace();
     }
 
     //** instead use: set.removeIf(x -> x > 30);

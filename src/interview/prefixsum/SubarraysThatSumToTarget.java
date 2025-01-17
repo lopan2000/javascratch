@@ -1,13 +1,12 @@
 package interview.prefixsum;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 /**
- * from ChatGPT
- * TODO understand this
- * see: bottom problem at https://algo.monster/problems/subarray_sum
+ * see: https://algo.monster/problems/subarray_sum
  */
 public class SubarraysThatSumToTarget {
 
@@ -46,7 +45,11 @@ public class SubarraysThatSumToTarget {
             int complement = currSum - target;
             if (psumMap.containsKey(complement)) {
                 for (int i : psumMap.get(complement)) {
-                    result.add(arr.subList(i+1, j+1)); //subList upperbound is exclusive, so need j+1
+                    /*
+                    subList upperbound is exclusive, so need j+1.
+                    Note: Arrays.stream(arr, i, j) is also exclusive on upperbound.
+                     */
+                    result.add(arr.subList(i+1, j+1));
                 }
             }
             psumMap.computeIfAbsent(currSum, k -> new ArrayList<>()).add(j);

@@ -1,15 +1,12 @@
 package apireview;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class StringAPI {
 
     public static void main(String[] args) {
-        //testParsing();
-        testStringIntern();
-    }
-
-    private static void testParsing() {
         /*
         paypalSplitString("WWWW");
         paypalSplitString("WBWW");
@@ -17,9 +14,8 @@ public class StringAPI {
         paypalSplitString("WBBWBBBW");
         paypalSplitString("BBB");
          */
-
-        String s = "leet**cod*e";
-        leetCodeRemoveStarsFromString(s);
+        //testStringIntern();
+        System.out.println(convertCharArrayToString(new char[]{'a','b','c'}));
     }
 
     /*
@@ -34,11 +30,6 @@ public class StringAPI {
                 s.replaceAll("^W+|W+$", "").split("W+")));
     }
 
-    private static void leetCodeRemoveStarsFromString(String s) {
-        System.out.println(Arrays.toString(
-                s.replaceAll("^\\*+|\\*+$", "").split("\\*+")));
-    }
-
     private static void testStringIntern() {
         String s1 = "abc";                          //str literals always stored in str pool
         String s2 = "abc";                          //str literals always stored in str pool
@@ -48,5 +39,7 @@ public class StringAPI {
         System.out.println(s1 == s2 && s2 == s3);   //true
     }
 
-
+    private static String convertCharArrayToString(char[] arr) {
+        return new String(arr);
+    }
 }
